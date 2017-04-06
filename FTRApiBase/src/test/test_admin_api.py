@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0,".")
+sys.path.insert(0,"..")
 from test.utils import rpc_call
 from pprint import pprint, pformat
 from flask_jsonrpc.proxy import ServiceProxy
@@ -37,6 +40,4 @@ if __name__ == '__main__':
 #     tester.SERVER_URL = LOCAL
     tester.SERVER_URL = AZURE
     tester.comm_index()
-    
-# S   
     
