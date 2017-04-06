@@ -38,5 +38,5 @@ if __name__ == '__main__':
     tester.SERVER_URL = AZURE
     tester.comm_index()
     
-    
+# S   
     
