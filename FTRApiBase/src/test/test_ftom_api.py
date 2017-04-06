@@ -2,35 +2,19 @@
 import sys
 sys.path.insert(0,".")
 sys.path.insert(0,"..")
-from test.utils import rpc_call
-from pprint import pprint, pformat
-from flask_jsonrpc.proxy import ServiceProxy
+from test.utils import rpc_call, call_debug, server
 
-AZURE = "http://ftr-app.japanwest.cloudapp.azure.com:5000"
-LOCAL = "http://localhost:5000"
 
-class TestFtomServiceProxy(object):
-    SERVER_URL = LOCAL
+@call_debug
+def obm_get_eptype():
+	return rpc_call(server.obm.get.eptype)
 
-    def __init__(self,server_url=None):
-        if server_url is not None:
-            self.SERVER_URL = server_url
+@call_debug
+def obm_save_eptype():
+	return rpc_call(server.obm.save.eptype)
 
-    def serviceProxy(self):
-        return ServiceProxy(self.SERVER_URL + '/api')
-
-    def get_eptype(self):
-        print("=============== CALL<{}> ===============".format(self.SERVER_URL))
-        server = self.serviceProxy()
-        #r = server.obm.get.eptype()
-        #print(pformat(r))
-        r = rpc_call(server.obm.get.eptype)
-        print(pformat(r))
-        print("=============== CALL<{}> ===============".format(self.SERVER_URL))
     
 if __name__ == '__main__':
-    tester = TestFtomServiceProxy()
-#     tester.SERVER_URL = LOCAL
-    tester.SERVER_URL = AZURE
-    tester.get_eptype()
+	obm_get_eptype()
+	obm_save_eptype()
     
