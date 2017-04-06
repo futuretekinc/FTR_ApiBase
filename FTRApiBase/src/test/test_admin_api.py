@@ -1,3 +1,4 @@
+#!/home/ftr/anaconda3/envs/python34/bin/python
 import sys
 sys.path.insert(0,".")
 sys.path.insert(0,"..")
